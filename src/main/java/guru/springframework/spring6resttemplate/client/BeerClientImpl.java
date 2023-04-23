@@ -74,15 +74,15 @@ public class BeerClientImpl implements BeerClient {
         }
 
         if (showInventory != null) {
-            uriComponentsBuilder.queryParam("showInventory", beerStyle);
+            uriComponentsBuilder.queryParam("showInventory", showInventory);
         }
 
         if (pageNumber != null) {
-            uriComponentsBuilder.queryParam("pageNumber", beerStyle);
+            uriComponentsBuilder.queryParam("pageNumber", pageNumber);
         }
 
         if (pageSize != null) {
-            uriComponentsBuilder.queryParam("pageSize", beerStyle);
+            uriComponentsBuilder.queryParam("pageSize", pageSize);
         }
 
 

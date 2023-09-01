@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class BeerClientImplTest {
@@ -45,4 +46,11 @@ class BeerClientImplTest {
         System.out.println("Paging works! :)");
     }
 
+    @Test
+    void getBeerById() {
+        Page<BeerDTO> dtos = beerClient.listBeers();
+        BeerDTO dto = dtos.getContent().get(0);
+        BeerDTO byId = beerClient.getBeerById(dto.getId());
+        assertNotNull(byId);
+    }
 }

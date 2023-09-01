@@ -17,15 +17,16 @@ public class BeerClientImpl implements BeerClient {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    private final static String API_URL = "http://localhost:8080/api/v1/beer";
+    private static final String BASE_URL = "http://localhost:8080";
+    private static final String GET_BEER_PATH = "/api/v1/beer";
 
     @Override
     public Page<BeerDTO> listBeers() {
         RestTemplate restTemplate = restTemplateBuilder.build();
 
-        ResponseEntity<String> stringResponse = restTemplate.getForEntity(API_URL, String.class);
+        ResponseEntity<String> stringResponse = restTemplate.getForEntity(BASE_URL + GET_BEER_PATH, String.class);
 
-        ResponseEntity<Map> mapResponse = restTemplate.getForEntity(API_URL, Map.class);
+        ResponseEntity<Map> mapResponse = restTemplate.getForEntity(BASE_URL + GET_BEER_PATH, Map.class);
 
         System.out.println(stringResponse.getBody());
 

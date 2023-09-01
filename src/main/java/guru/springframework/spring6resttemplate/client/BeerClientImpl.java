@@ -25,6 +25,6 @@ public class BeerClientImpl implements BeerClient {
                 restTemplate.getForEntity(GET_BEER_PATH, BeerDTOPageImpl.class);
 
 
-        return null;
+        return response.getBody();
     }
 }

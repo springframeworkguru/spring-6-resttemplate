@@ -70,4 +70,11 @@ public class BeerClientImpl implements BeerClient {
         URI uri = restTemplate.postForLocation(GET_BEER_PATH, newDto);
         return restTemplate.getForObject(uri.getPath(), BeerDTO.class);
     }
+
+    @Override
+    public BeerDTO updateBeer(BeerDTO beerDto) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        restTemplate.put(GET_BEER_BY_ID_PATH, beerDto, beerDto.getId());
+        return getBeerById(beerDto.getId());
+    }
 }

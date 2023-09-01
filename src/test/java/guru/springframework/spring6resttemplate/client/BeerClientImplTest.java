@@ -69,4 +69,25 @@ class BeerClientImplTest {
         BeerDTO savedDto = beerClient.createBeer(newDto);
         assertNotNull(savedDto);
     }
+
+    @Test
+    void testUpdateBeer() {
+        BeerDTO newDto = BeerDTO.builder()
+                .price(new BigDecimal(10.99))
+                .beerName("Mango Bobs - #2 - Created in the test")
+                .beerStyle(BeerStyle.IPA)
+                .quantityOnHand(500)
+                .upc("1234567")
+                .build();
+
+        BeerDTO beerDto = beerClient.createBeer(newDto);
+
+        final String newName = "Mango Bobs - #3 - Updated";
+
+        beerDto.setBeerName(newName);
+        BeerDTO updatedBeer = beerClient.updateBeer(beerDto);
+
+        assertEquals(newName, updatedBeer.getBeerName());
+    }
+
 }

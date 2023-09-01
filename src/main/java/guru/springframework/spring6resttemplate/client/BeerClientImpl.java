@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 
 @RequiredArgsConstructor
 @Service
@@ -22,6 +24,8 @@ public class BeerClientImpl implements BeerClient {
         RestTemplate restTemplate = restTemplateBuilder.build();
 
         ResponseEntity<String> stringResponse = restTemplate.getForEntity(API_URL, String.class);
+
+        ResponseEntity<Map> mapResponse = restTemplate.getForEntity(API_URL, Map.class);
 
         System.out.println(stringResponse.getBody());
 

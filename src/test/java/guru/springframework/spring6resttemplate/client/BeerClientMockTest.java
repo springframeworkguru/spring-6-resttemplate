@@ -39,6 +39,7 @@ class BeerClientMockTest {
 
     private static final String URL = "http://localhost:8080";
 
+    private static final String BASIC_AUTH_HEADER = "Basic dXNlcjE6c2FsYXNhbmE=";
     BeerClient beerClient;
 
     MockRestServiceServer server;
@@ -84,8 +85,9 @@ class BeerClientMockTest {
         String payload = objectMapper.writeValueAsString(getPage());
 
         server.expect(method(HttpMethod.GET))
-                .andExpect(requestTo(URL + BeerClientImpl.GET_BEER_PATH))
-                .andRespond(withSuccess(payload, MediaType.APPLICATION_JSON));
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(requestTo(URL + BeerClientImpl.GET_BEER_PATH))
+            .andRespond(withSuccess(payload, MediaType.APPLICATION_JSON));
 
         Page<BeerDTO> dtos = beerClient.listBeers();
         assertThat(dtos.getContent().size()).isGreaterThan(0);
@@ -102,8 +104,9 @@ class BeerClientMockTest {
 
     private void mockGetOperation() {
         server.expect(method(HttpMethod.GET))
-                .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
-                .andRespond(withSuccess(dtoJson, MediaType.APPLICATION_JSON));
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
+            .andRespond(withSuccess(dtoJson, MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -112,6 +115,7 @@ class BeerClientMockTest {
                                         .build(dto.getId());
 
         server.expect(method(HttpMethod.POST))
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
             .andExpect(requestTo(URL + BeerClientImpl.GET_BEER_PATH))
             .andRespond(withAccepted().location(uri));
 
@@ -125,8 +129,9 @@ class BeerClientMockTest {
     void testUpdateBeer() {
 
         server.expect(method(HttpMethod.PUT))
-                .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
-                .andRespond(withNoContent());
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
+            .andRespond(withNoContent());
 
         mockGetOperation();
 
@@ -137,8 +142,9 @@ class BeerClientMockTest {
     @Test
     void testDeleteBeer() {
         server.expect(method(HttpMethod.DELETE))
-                .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
-                .andRespond(withNoContent());
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
+            .andRespond(withNoContent());
 
         beerClient.deleteBeer(dto.getId());
 
@@ -149,8 +155,9 @@ class BeerClientMockTest {
     @Test
     void testDeleteNotFound() {
         server.expect(method(HttpMethod.DELETE))
-                .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
-                .andRespond(withResourceNotFound());
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(requestToUriTemplate(URL + BeerClientImpl.GET_BEER_BY_ID_PATH, dto.getId()))
+            .andRespond(withResourceNotFound());
 
         assertThrows(HttpClientErrorException.class, () -> {
             beerClient.deleteBeer(dto.getId());
@@ -168,9 +175,10 @@ class BeerClientMockTest {
                 .build().toUri();
 
         server.expect(method(HttpMethod.GET))
-                .andExpect(requestTo(uri))
-                .andExpect(queryParam("beerName", "ALE"))
-                .andRespond(withSuccess(response, MediaType.APPLICATION_JSON));
+            .andExpect(requestTo(uri))
+            .andExpect(header("Authorization", BASIC_AUTH_HEADER))
+            .andExpect(queryParam("beerName", "ALE"))
+            .andRespond(withSuccess(response, MediaType.APPLICATION_JSON));
 
         Page<BeerDTO> responsePage = beerClient.listBeers("ALE", null, null, null, null);
 

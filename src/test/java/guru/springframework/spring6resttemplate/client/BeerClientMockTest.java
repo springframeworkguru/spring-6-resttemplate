@@ -109,11 +109,15 @@ class BeerClientMockTest {
         ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId("springauth");
         OAuth2AccessToken token = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, "test", Instant.MIN, Instant.MAX);
 
-        when(manager.authorize(any())).thenReturn(new OAuth2AuthorizedClient(clientRegistration, "test", token));
+        when(manager.authorize(any()))
+            .thenReturn(new OAuth2AuthorizedClient(clientRegistration, "test", token));
 
         RestTemplate restTemplate = restTemplateBuilder.build();
         server = MockRestServiceServer.bindTo(restTemplate).build();
-        when(mockRestTemplateBuilder.build()).thenReturn(restTemplate);
+
+        when(mockRestTemplateBuilder.build())
+            .thenReturn(restTemplate);
+
         beerClient = new BeerClientImpl(mockRestTemplateBuilder);
         dto = getBeerDto();
         dtoJson = objectMapper.writeValueAsString(dto);

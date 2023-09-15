@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.model;
+package fi.soininen.tatu.spring6resttemplate.model;
 
 /**
  * Created by jt, Spring Framework Guru.

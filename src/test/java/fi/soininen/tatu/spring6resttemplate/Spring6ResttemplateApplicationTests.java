@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate;
+package fi.soininen.tatu.spring6resttemplate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

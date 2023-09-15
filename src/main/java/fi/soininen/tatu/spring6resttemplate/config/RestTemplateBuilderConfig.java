@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.config;
+package fi.soininen.tatu.spring6resttemplate.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.client.RestTemplateBuilderConfigurer;

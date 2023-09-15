@@ -1,8 +1,8 @@
-package guru.springframework.spring6resttemplate.client;
+package fi.soininen.tatu.spring6resttemplate.client;
 
-import guru.springframework.spring6resttemplate.model.BeerDTO;
-import guru.springframework.spring6resttemplate.model.BeerDTOPageImpl;
-import guru.springframework.spring6resttemplate.model.BeerStyle;
+import fi.soininen.tatu.spring6resttemplate.model.BeerDTO;
+import fi.soininen.tatu.spring6resttemplate.model.BeerDTOPageImpl;
+import fi.soininen.tatu.spring6resttemplate.model.BeerStyle;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.data.domain.Page;

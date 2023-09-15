@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.config;
+package fi.soininen.tatu.spring6resttemplate.config;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;

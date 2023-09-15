@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate;
+package fi.soininen.tatu.spring6resttemplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

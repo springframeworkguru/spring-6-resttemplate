@@ -1,12 +1,12 @@
-package guru.springframework.spring6resttemplate.client;
+package fi.soininen.tatu.spring6resttemplate.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import guru.springframework.spring6resttemplate.config.OAuthClientInterceptor;
-import guru.springframework.spring6resttemplate.config.RestTemplateBuilderConfig;
-import guru.springframework.spring6resttemplate.model.BeerDTO;
-import guru.springframework.spring6resttemplate.model.BeerDTOPageImpl;
-import guru.springframework.spring6resttemplate.model.BeerStyle;
+import fi.soininen.tatu.spring6resttemplate.model.BeerDTOPageImpl;
+import fi.soininen.tatu.spring6resttemplate.model.BeerStyle;
+import fi.soininen.tatu.spring6resttemplate.config.OAuthClientInterceptor;
+import fi.soininen.tatu.spring6resttemplate.config.RestTemplateBuilderConfig;
+import fi.soininen.tatu.spring6resttemplate.model.BeerDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

@@ -27,6 +27,19 @@ public class BeerClientImpl implements BeerClient {
     private static final String GET_BEER_BY_ID_PATH = "/api/v1/beer/{beerId}";
 
     @Override
+    public void deleteBeer(UUID beerId) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        restTemplate.delete(GET_BEER_BY_ID_PATH, beerId);
+    }
+
+    @Override
+    public BeerDTO updateBeer(BeerDTO beerDto) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        restTemplate.put(GET_BEER_BY_ID_PATH, beerDto, beerDto.getId());
+        return getBeerById(beerDto.getId());
+    }
+
+    @Override
     public BeerDTO createBeer(BeerDTO newDto) {
         RestTemplate restTemplate = restTemplateBuilder.build();
 

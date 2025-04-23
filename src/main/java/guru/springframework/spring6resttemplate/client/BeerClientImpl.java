@@ -23,8 +23,8 @@ public class BeerClientImpl implements BeerClient {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    private static final String GET_BEER_PATH = "/api/v1/beer";
-    private static final String GET_BEER_BY_ID_PATH = "/api/v1/beer/{beerId}";
+    public static final String GET_BEER_PATH = "/api/v1/beer";
+    public static final String GET_BEER_BY_ID_PATH = "/api/v1/beer/{beerId}";
 
     @Override
     public void deleteBeer(UUID beerId) {

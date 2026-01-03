@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.model;
+package guru.springframework.spring7resttemplate.model;
 
 /**
  * Created by jt, Spring Framework Guru.

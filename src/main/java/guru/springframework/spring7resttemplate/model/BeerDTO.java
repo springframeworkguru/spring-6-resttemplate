@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.model;
+package guru.springframework.spring7resttemplate.model;
 
 import lombok.Builder;
 import lombok.Data;

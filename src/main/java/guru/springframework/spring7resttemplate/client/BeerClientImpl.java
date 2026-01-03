@@ -1,6 +1,6 @@
-package guru.springframework.spring6resttemplate.client;
+package guru.springframework.spring7resttemplate.client;
 
-import guru.springframework.spring6resttemplate.model.BeerDTO;
+import guru.springframework.spring7resttemplate.model.BeerDTO;
 import org.springframework.data.domain.Page;
 
 /**

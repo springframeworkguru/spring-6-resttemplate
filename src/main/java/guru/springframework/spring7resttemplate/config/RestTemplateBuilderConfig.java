@@ -1,4 +1,4 @@
-package guru.springframework.spring6resttemplate.config;
+package guru.springframework.spring7resttemplate.config;
 
 import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.boot.restclient.autoconfigure.RestTemplateBuilderConfigurer;
